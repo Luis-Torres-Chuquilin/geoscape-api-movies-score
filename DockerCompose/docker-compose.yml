@@ -9,8 +9,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: movies_score
-    # volumes:
-    #   - ./devDtabase:/var/lib/mysql:rw
 
   movies-api:
     image: fastapi-app

@@ -40,6 +40,7 @@ class MoviesScoreModel(Base):
     provider = Column(String(100), index=True, nullable=False)
     score =  Column(Float, nullable=False)
 
+
 Base.metadata.create_all(bind=engine)
 
 with open("Movies.csv", "r") as f:

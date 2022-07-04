@@ -1,8 +1,8 @@
 
 description = """
-Movies Score API - you can Retrieve & Post Movies Scores". 🚀
+🚀 Movies Score API - you can Retrieve & Post Movies Scores". 🚀
 
-## Movies Score endpoints
+# Movies Score endpoints
 
 You will be able to:
 
