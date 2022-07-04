@@ -6,8 +6,8 @@ It consist in two statege:
 
 ## `Check if the front display the right text according to the states`
 
-The answers of useGetMovieScore are Mocked, basically it call the API with GET and has as an
-answer fetchState, it could be DEFAULT, LOADING , ERROR, SUCCESS
+The answers of useGetMovieScore are Mocked, basically, it calls the API with GET and has as an
+answer fetchState, it could be DEFAULT, LOADING, ERROR, SUCCESS
 
 ```
 /src/main_test/App.test.tsx
@@ -26,7 +26,7 @@ answer fetchState, it could be DEFAULT, LOADING , ERROR, SUCCESS
 
 The answer of the server are mocked
 
-For conveniences the this test are in the same folder than the services to be tested
+For convenience, the tests are in the same folder as the services to be tested
 
 <br>
 

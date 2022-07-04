@@ -1,0 +1,41 @@
+# @format
+
+version: "3"
+services:
+  db:
+    image: arm64v8/mysql:oracle
+    restart: always
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: movies_score
+    # volumes:
+    #   - ./devDtabase:/var/lib/mysql:rw
+
+  movies-api:
+    image: fastapi-app
+    build:
+      context: ../movies-score-back-api
+      dockerfile: Dockerfile
+    container_name: fastapi-app
+    ports:
+      - "8000:80"
+    depends_on:
+      - db
+    environment:
+      - ENVIRONMENT=development
+      - DATABASE_URL=mysql
+      - DATABASE_USER=root
+      - DATABASE_PASS=root
+      - DATABASE_NAME=movies_score
+
+  movie-front:
+    image: typescrip-app
+    build:
+      context: ../movies-score-front-api
+      dockerfile: Dockerfile
+    container_name: typescrip-app
+    ports:
+      - "8080:3000"
+    environment:
+      - URL=fastapi-app

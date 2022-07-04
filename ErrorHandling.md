@@ -2,11 +2,11 @@
 
 # Handling Errors
 
-The errors are handling by the backend, it sends message to the front, and is the frond which dysplay it to the user.
+The errors are handled by the backend, it sends a message to the front, and is the front which displays it to the user.
 
 # Erros
 
-The frond-end does not allow to send a wrong or incomplete paylaod to the backend.
+The frontend does not allow sending a wrong or incomplete payload to the backend.
 
 ## `Backend - Handler Cases`
 
