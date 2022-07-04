@@ -23,7 +23,7 @@ async def test_client():
 
 @pytest.mark.asyncio
 
-async def test_hello_world(test_client: httpx.AsyncClient):
+async def test_init_server(test_client: httpx.AsyncClient):
     response = await test_client.get("/")
     assert response.status_code == status.HTTP_200_OK
     json = response.json()
