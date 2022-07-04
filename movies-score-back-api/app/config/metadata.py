@@ -1,12 +1,8 @@
 
 description = """
-ChimichangApp API helps you to Retrieve & Post Movies Scores". 🚀
+Movies Score API - you can Retrieve & Post Movies Scores". 🚀
 
-## Items
-
-You can **read items**.
-
-## Users
+## Movies Score endpoints
 
 You will be able to:
 

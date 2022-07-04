@@ -32,7 +32,7 @@ services:
   movie-front:
     image: typescrip-app
     build:
-      context: ../movies-score-front-api
+      context: ../movies-score-frontend-api
       dockerfile: Dockerfile
     container_name: typescrip-app
     ports:

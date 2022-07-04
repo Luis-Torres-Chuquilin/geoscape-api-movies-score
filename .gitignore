@@ -1,5 +1,5 @@
 # Node
-/movies-score/app/node-modules
+/movies-score-frontend-api/app/node_modules
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
