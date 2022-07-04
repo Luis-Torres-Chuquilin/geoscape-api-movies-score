@@ -1,35 +1,81 @@
 <!-- @format -->
 
-# fastAPI Movie Score
+# API Movie Score
 
 FastAPI project.
 
-- API for retrieve and create Movies Score
-- Every endpoint has a public access, there is not need of keys
+- API for retrieving and creating Movies Score
+- Every endpoint has public access, and there is no need for keys
 - The Database is MYSQL
 
-# Install Requirements & Run the App locally
+# Run The Project
 
-- Python 3.7+
+Backend - Inside the folder movies-score-back-api/app run:
 
 ```bash
 $ pip install -r requirements.txt
+$ python load_csv.py       #  insert the csv into the database
 $ uvicorn main:app --reload
 ```
 
-# Run the test
+Frontend - Inside the folder movies-score-front-api/app
 
-Before running the test localy you need to add in the terminal
+```bash
+$ npm install
+$ npm start
+```
+
+# Run Test Locally
+
+Before running the test locally you need to add:
+
+## Backend
 
 ```bash
 $ export PYTHONPATH=. pytest
 ```
+
+Inside the folder movies-score-back-api/app
 
 Then
 
 ```bash
 pytest
 ```
+
+For additional information Check [Testing back](TestingBack.md)
+
+## Frontend
+
+Inside the folder movies-score-front-api/app
+
+```bash
+$ npm run test
+```
+
+For additional information Check [Testing Front](TestingFront.md)
+
+# Available endpoints - Backend
+
+| Description           | Endpoint            | Method |
+| --------------------- | ------------------- | ------ |
+| Api index             | `/`                 | GET    |
+| List all Movies Score | `/api/movies_score` | GET    |
+| Get Movie Score       | `/api/movie_score`  | GET    |
+| Create Movie Score    | `/api/movie_score`  | POST   |
+
+# `Project Structure`
+
+| Folder     | Description                                                 |
+| ---------- | ----------------------------------------------------------- |
+| config     | Has the config for the env variables                        |
+| db         | Db connection - MYSQL                                       |
+| middleware | Has the middlewares/cors                                    |
+| models     | Db models that used in services/handlers                    |
+| routes     | All endpoints / handlers                                    |
+| schemas    | pydantic models that used in service/crud or route/handlers |
+| services   | CRUD for db models that used in routes/handlers             |
+| test       |                                                             |
 
 # Add environment variables - Production
 
@@ -63,24 +109,9 @@ To use environment variables in development we've already installed the library 
 
 The config/settings.py will read the env from the .env file.
 
-```bash
-$ pip install python-dotenv
-```
-
-# Available endpoints
-
-- Index/Movies Score management endpoint
-
-| Description           | Endpoint            | Method |
-| --------------------- | ------------------- | ------ |
-| Api index             | `/`                 | GET    |
-| List all Movies Score | `/api/movies_score` | GET    |
-| Get Movie Score       | `/api/movie_score`  | GET    |
-| Create Movie Score    | `/api/movie_score`  | POST   |
-
 # POST Request for `Create Movie Score`
 
-The below example goes into json body of POST request while creating a movie scpore.
+The below example goes into the JSON body of the POST request while creating a movie score.
 
 ```json
 {
@@ -98,50 +129,43 @@ Example
 movie=Rambo&provider=IMDB
 ```
 
-# `Project Structure`
+# Naming Convention - Backend
 
-| Folder     | Description                                                 |
-| ---------- | ----------------------------------------------------------- |
-| config     | Has the config for the env variables                        |
-| db         | Db connection - MYSQL                                       |
-| middleware | Has the middlewares/cors                                    |
-| models     | Db models that used in services/handlers                    |
-| routes     | All endpoints / handlers                                    |
-| schemas    | pydantic models that used in service/crud or route/handlers |
-| services   | CRUD for db models that used in routes/handlers             |
-| test       |                                                             |
+The naming convention in folders, classes, functions, and variables is considered from the assumption that the project grows and it is necessary to opt for names that serve as a guide for developers.
 
-# Test
+`Assumption`:
 
-There
-The test run:
-The test xdx:
+| Folder     | Folder     | file.py                  |
+| ---------- | ---------- | ------------------------ |
+| `routes`   | movies     | moviesScore_routes       |
+|            |            | moviesActos_routes       |
+|            |            | moviesProviders_routes   |
+|            | providers  | providers_routes         |
+|            |            | providersReveneus_routes |
+|            | user       | users_routes             |
+|            |            | Auth_routes              |
+|            |            |                          |
+| `models`   | movies     | movieScore_models        |
+|            | providers  | providers_models         |
+|            |            |                          |
+| `schemas`  | movies     | movieScore_schemas       |
+|            |            | moviesActors_schemas     |
+|            | providers  | providers_schemas        |
+|            |            | providerReveneus_schemas |
+|            |            | moviesActors_schemas     |
+|            |            |                          |
+| `services` | movies     | moviesScore_service      |
+|            | provider   | provider_service         |
+|            |            |                          |
+| `db`       | mysequlize | mysqlConnection          |
+|            | redis      | redisConnection          |
 
-# Convencion de nombres
+# Naming Convention - Fronend
 
-La convencion de nombres en las carpetas, clases, funciones y variables se considera apartir del supuesto que el projecto crece y es necesario optar por nombres que sirvan de guia para los desarrolladores.
+# Why use a SQL Daatabase instead of a NoSQL
 
-Supuesto:
+Because the project is small the use of SQL or NoSQL will not make much of a difference. But if the application begins to grow, it may be necessary to relate many tables, in which case a relational database is preferable according to the litetaruta
 
-routes - movies - moviesScore_routes -> in the case we need to add more routes related to movies
-routes - movies - moviesActos_routes ->
-routes - movies - moviesProviders_routes ->
-routes - providers - providers_routes -> new provider, provider details
-routes - providers - providersReveneus_routes ->
-routes - user - users_routes -> LogIn , LogOut , RecoverUser, UpdateUser
-routes - user - Auth_routes -> Mailing , Token, GoogleOuth ...
+# Why RESTAPI instead of SOAP
 
-models - movies - movieScore_models
-model - providers - providersModels
-
-schemas - movies - movieScore_schemas
-schemas - movies - moviesActors_schemas
-schemas - movies - moviesProviders_schemas
-schemas - providers - providers_schemas
-schemas - providers - providerReveneus_schemas
-
-services - movies - moviesScore_service
-services - provider - provider_service
-
-db - mysequlize
-db - redis - redisConnection
+RESTAPI is faster than SOAP and more flexible, while SOAP requires more complexity. For more information follow this [link](https://messagemedia.com/uk/blog/the-benefits-of-moving-from-soap-to-rest-apis/)
