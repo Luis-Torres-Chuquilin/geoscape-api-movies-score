@@ -37,9 +37,7 @@ async def movie_score(movie_name: str, movie_provider: str , db: Session = Depen
 async def create_new_movie_score(movie: MovieScoreCreateSchema, db: Session = Depends(get_db)):
     """Endpoint to create a movie score
     """
-    if not isinstance(movie.score, (int, float)):    
-        raise HTTPException(status_code=422, detail="Score is not valid")
-
+    
     moviescore = get_movie_score(db=db, movie_name=movie.movie , movie_provider=movie.provider)
     
     if moviescore:

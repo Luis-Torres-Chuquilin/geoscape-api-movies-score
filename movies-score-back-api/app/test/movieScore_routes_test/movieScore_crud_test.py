@@ -12,7 +12,6 @@ from services.movies.moviesScore_service import create_movie_score
 from config.settings import Settings
 
 settings = Settings()
-
 SQLALCHEMY_DATABASE_URL = f"mysql+pymysql://{settings.database_user}:{settings.database_pass}@{settings.database_url}/test_db"
 
 engine = create_engine(
@@ -47,17 +46,19 @@ def client(session):
     app.dependency_overrides[get_db] = override_get_db
     yield TestClient(app)
 
-def test_index(client):
+def test_movie_score_get_all(client):
     res = client.get("/api/movies_score")
     assert res.status_code == 200
 
+def test_movie_score_get_one(client):
+    res = client.get("/api/movie_score/?movie_name=string&movie_provider=string")
+    assert res.status_code == 404
+    assert res.json()['detail'] == "Movie not found"
 
 
-#to get the current working directory
-
-
-def test_get_todos(client):
+def test_create_todos(client):
     res = client.post("/api/movie_score", json={"movie": "Geoscape", "provider": "Australia", "score": 9.3})
     assert res.status_code == 201
     res = client.post("/api/movie_score", json={"movie": "Geoscape", "provider": "Australia", "score": 9.3})
     assert res.status_code == 400
+    assert res.json()['detail'] == "Movie is already registered"
