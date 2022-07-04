@@ -195,10 +195,10 @@ The naming convention in folders, classes, functions, and variables is considere
 
 # Why use a SQL Daatabase instead of a NoSQL
 
-Because the project is small the use of SQL or NoSQL will not make much of a difference. But if the application begins to grow, it may be necessary to relate many tables, in which case a relational database is preferable according to the litetaruta
+Because the project is small the use of SQL or NoSQL will not make much of a difference. But if the application begins to grow, it may be necessary to relate many tables, in which case a relational database is preferable according to the litetaruta. More details to be added.
 <br>
 <br>
 
 # Why RESTAPI instead of SOAP
 
-RESTAPI is faster than SOAP and more flexible, while SOAP requires more complexity. For more information follow this [link](https://messagemedia.com/uk/blog/the-benefits-of-moving-from-soap-to-rest-apis/)
+RESTAPI is faster than SOAP and more flexible, while SOAP requires more complexity. More details to be added.
