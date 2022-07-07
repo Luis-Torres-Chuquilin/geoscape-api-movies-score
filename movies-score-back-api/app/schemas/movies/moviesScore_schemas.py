@@ -21,3 +21,5 @@ class MoviesScoreSchema(MovieBaseSchema):
 
     class Config:
         orm_mode = True
+
+

@@ -1,6 +1,6 @@
 import os 
 from fastapi import FastAPI
-
+import uvicorn
 from routes import router as endpoint_router
 
 # Db Connection & Db Models
@@ -42,6 +42,11 @@ async def root():
     return {"message": "Welcome to Movies Score API!"}
 
 
+
 """Script to Load the CSV into the database
 """
 # os.system('python load_csv.py')
+
+
+# if __name__ == '__main__':
+#     uvicorn.run(app, port=8080, host='0.0.0.0')
